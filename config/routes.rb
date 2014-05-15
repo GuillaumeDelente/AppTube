@@ -4,10 +4,12 @@ Apptube::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'welcome#index'
+  root 'welcome#index'
 
   namespace :api do
-   resources :apps, only: [:index, :show, :create, :update, :destroy]
+    resources :apps, only: [:index, :show, :create, :update, :destroy] do
+      resources :builds, only: [:index, :show, :create, :update, :destroy]
+    end
   end
 
   # Example of regular route:
