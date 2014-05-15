@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
       sign_in user, store: false
     end
   end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
 end

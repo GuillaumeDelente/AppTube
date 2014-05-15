@@ -7,7 +7,7 @@ Apptube::Application.routes.draw do
    root 'welcome#index'
 
   namespace :api do
-   resources :apps, only: [:index, :create, :update, :destroy]
+   resources :apps, only: [:index, :show, :create, :update, :destroy]
   end
 
   # Example of regular route:
