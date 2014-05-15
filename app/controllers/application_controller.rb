@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user_from_token!
     user_token = params[:user_token].presence
-    user = user_token && User.find_by_token(user_token)
+    user = user_token && User.find_by_user_token(user_token)
 
     if user && Devise.secure_compare(user.secret_token, params[:secret_token])
       sign_in user, store: false
