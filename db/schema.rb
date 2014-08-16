@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515052647) do
+ActiveRecord::Schema.define(version: 20140816230755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,10 @@ ActiveRecord::Schema.define(version: 20140515052647) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "app_id"
+    t.string   "apk_file_name"
+    t.string   "apk_content_type"
+    t.integer  "apk_file_size"
+    t.datetime "apk_updated_at"
   end
 
   create_table "users", force: true do |t|
