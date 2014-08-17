@@ -1,7 +1,7 @@
 class Api::BuildsController < ApplicationController
   
   before_filter :fetch_app
-  before_filter :fetch_build, :except => [:index]
+  before_filter :fetch_build, :except => [:index, :create]
 
   def fetch_app
     @app = current_user.apps.find_by_name(params[:app_id])
@@ -20,5 +20,17 @@ class Api::BuildsController < ApplicationController
   def index
     render json: @app.builds
   end
+
+  def create
+    @build = Build.create(build_params)
+    @build.app = @app
+    @build.save
+    render json: @build
+  end
+
+  private
+    def build_params
+      params.require(:build).permit(:apk)
+    end
 
 end
