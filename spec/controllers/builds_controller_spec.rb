@@ -20,12 +20,4 @@ describe Api::BuildsController do
     expect(response).to be_success
   end
 
-  it 'fails when an apk is not provided' do
-    app = create :app
-    user = create :user
-    user.apps = [app]
-    post :create, :format => :json, :user_token => user.user_token, :secret_token => user.secret_token, :app_id => app.name
-    puts response.body
-    expect(response.status).to eq 422
-  end
 end
