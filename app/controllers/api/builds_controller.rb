@@ -24,8 +24,11 @@ class Api::BuildsController < ApplicationController
   def create
     @build = Build.create(build_params)
     @build.app = @app
-    @build.save
-    render json: @build
+    if @build.save
+      render json: @build
+    else
+      render json: @build.errors.full_messages, status: :unprocessable_entity
+    end
   end
 
   private
